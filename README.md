@@ -63,11 +63,13 @@ Cinq bots BotFather, chacun dédié à un usage précis. Tous les tokens sont ho
 
 | Bot | Rôle | Implémentation |
 |---|---|---|
-| `TernOmpBot` | Canal Telegram vers une session omp vivante | Bun/TypeScript, daemon systemd, bus WebSocket `omp-dash` |
-| `Bookmarks` | Notifie chaque nouveau bookmark X avec un verdict | appélé par `bookmark-watcher` |
-| `whioteoutsurvival` | Bot de jeu (automatisation) | Python |
-| `lightvelalala` | Bot utilitaire | Python |
-| `hermes_unlaajuhruon4klj_bot` | Passerelle Hermes | Python |
+| `TernOmpBot` | Canal Telegram vers une session omp vivante | Bun/TypeScript, daemon systemd, bus WebSocket |
+| `Bookmarks` | Notifie chaque nouveau bookmark X avec un verdict | appelé par `bookmark-watcher` |
+| `hermes_unlaajuhruon4klj_bot` | Passerelle du gateway Hermes | Python |
+| `whioteoutsurvival` | rôle : à documenter | — |
+| `lightvelalala` | rôle : à documenter | — |
+
+> Les deux derniers n'ont ni description ni nom public renseignés dans BotFather, et leur code n'est pas sur cette machine : je ne leur invente pas de rôle. Un bot révoqué (`openCode`, token expiré) est compté à part.
 
 **Architecture commune :** un seul consommateur `getUpdates` par bot, un seul point d'envoi (`sendMessage`). Les tokens sont lus depuis un fichier `0600` (pas d'argv, pas de log en clair).
 
@@ -162,6 +164,8 @@ Le navigateur (camoufox) ne sert qu'à deux choses :
 
 Application **local-first** : Next.js 16, SQLite via Prisma, export Obsidian.
 
+> **Fork de [viperrcrypto/Siftly](https://github.com/viperrcrypto/Siftly)** (MIT). Le travail ajouté ici : le proxy LLM local pour la catégorisation et le fact-checking, l'export Obsidian avec front-matter, la déduplication et l'import automatique depuis `bookmark-watcher`.
+
 - catégorisation automatique par thème
 - génération de notes Markdown avec front-matter
 - export vers le vault, dossiers par auteur ou par catégorie
@@ -248,7 +252,7 @@ Le déclenchement passe par un serveur d'automation local : l'application expose
 | Application | Stack | Rôle |
 |---|---|---|
 | **pronote-blocus** | Python/FastAPI + PWA + bot Telegram | liste du travail à rattraper après une absence, en lecture seule |
-| **Siftly** | Next.js 16, Prisma, SQLite | gestionnaire de bookmarks, export Obsidian |
+| **Siftly** | Next.js 16, Prisma, SQLite | gestionnaire de bookmarks, export Obsidian — *fork de viperrcrypto/Siftly* |
 | **bookmark-watcher** | Python | collecte X, analyse, notification |
 | **omp-dash** | Bun/TypeScript | tableau de bord des agents |
 | **tern-remote** | Rust | sessions distantes |
