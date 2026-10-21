@@ -269,6 +269,7 @@ Aucune réponse ne dépend du LLM. Chaque fonction a un **repli déterministe**,
 - **44 services utilisateur** actifs (dont plusieurs timers)
 - conteneurs : serveur photo auto-hébergé (Immich, PostgreSQL, ML, Redis)
 - stockage : deux NVMe, une clé USB de sauvegarde, un volume de vaults
+- **quatre box distantes** (instabox) tournent en continu et complètent la machine : le backend Hermes, un navigateur d'agent, un bac à sable et une instance Obsidian
 
 ---
 
